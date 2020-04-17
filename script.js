@@ -15,7 +15,7 @@ $("#searchBtn").on("click", function(event) {
         storeCity.push(inputCity);
         localStorage.setItem("locallyStoreCities",JSON.stringify(storeCity));
 
-        $("#listOfCities").prepend($("<button>").text(inputCity).addClass("buttonWithCity"));
+        $("#listOfCities").prepend($("<button>").text(inputCity).addClass("buttonWithCity btn btn-primary btn-lg btn-block"));
     }
     
     currentWeatherAPI(inputCity);
@@ -37,7 +37,7 @@ var citiesFromLocalStorage=JSON.parse(localStorage.getItem("locallyStoreCities")
      var lastCityStored = citiesFromLocalStorage[citiesFromLocalStorage.length-1]
      currentWeatherAPI(lastCityStored);
      for (var i=0;i<citiesFromLocalStorage.length;i++) {
-         $("#listOfCities").prepend($("<button>").text(citiesFromLocalStorage[i]).addClass("buttonWithCity"));
+         $("#listOfCities").prepend($("<button>").text(citiesFromLocalStorage[i]).addClass("buttonWithCity btn btn-primary btn-lg btn-block"));
      }
  }
  
@@ -76,9 +76,7 @@ function currentWeatherAPI(city) {
         }).then(function(uvresponse) {
            
             //link to UV text on screen
-            // console.log(uvresponse);
-            
-            $("#uvIndex").text(uvresponse.value);
+            $("#uvIndex").text(uvresponse.value).addClass("uvindexBox");
         })
         //connecting 5 day forcast api: date,icon, temp,hummidity
         var fiveDayForcastURL="http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+apiKey;
@@ -102,24 +100,15 @@ function currentWeatherAPI(city) {
                     
                     $("#day"+index).text(date);
                     $("#weatherIcon"+index).attr("src", "http://openweathermap.org/img/wn/" + icon +".png");
-                    // change to FERENHEIT
                     $("#temp"+index).text(temp+" °F");
                     $("#humidity"+index).text(humidity);
                     index++;
 
-                }
-            }
-            // console.log((fiveDayResponse.list[0].main.temp - 273.15) * 9/5 + 32);
-            
-        })
-
-
-        //show  the weather
+                };
+            };
+        });
         $("#weatherSection").show();
-
-    })
-    
-
-}
+    });
+};
 
 

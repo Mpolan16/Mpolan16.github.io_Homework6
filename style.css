@@ -8,15 +8,11 @@
     background-color: rgb(245, 243, 243);
    
 }
-#inputCity,
-#searchBtn{
-    display: inline-block;
-}
 
 .blueBoxes {
     display:inline-block;
     border-radius:25px;
-    background-color:rgb(55, 128, 211);
+    background-color:#007bff;
     padding:5px;
     margin-left: 5px;
    
