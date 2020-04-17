@@ -22,20 +22,13 @@ function currentWeatherAPI(city) {
         url: currentWeatherURL,
         method: "GET"
     }).then(function(response){
-        // console.log(response);
-        console.log(response.wind.speed);
-        console.log(response.main.temp)
-        console.log(response.main.humidity);
-        console.log(response.coord.lon);
-        console.log(response.coord.lat);
-        console.log(response.weather[0].icon);
 
         //convert K to F
         var tempInF=parseInt((response.main.temp - 273.15) * 9/5 + 32);
 
+        //link to text
         $("#cityName").text(city);
         $("#currentDate").text(" (" + moment().format("MM/DD/YYYY") + ") ");
-        // $("#cityName").text(city);
 
         $("#temp").text(tempInF +" °F");
         $("#humidity").text(response.main.humidity + "%");
@@ -43,9 +36,21 @@ function currentWeatherAPI(city) {
         $("#weatherIcon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon +".png")
 
         //new ajax call for uv index
-        // api.openweathermap.org/data/2.5/uvi?lat=37.75&lon=-122.37
+        var lat=response.coord.lat;
+        var lon=response.coord.lon;
+
+        $.ajax({
+            url: "http://api.openweathermap.org/data/2.5/uvi?appid="+apiKey+"&lat="+lat+"&lon="+lon,
+            method: "GET"
+        }).then(function(response) {
+            console.log(lat);
+            console.log(lon);
+
+            //link to UV text on screen
+            $("#uvIndex").text(response.value);
+        })
         
-        //show  the weather
+        //show  the weathe
         $("#weatherSection").show();
 
     })
