@@ -1,0 +1,21 @@
+.jumbotron {
+    background-color: rgb(48, 47, 47);
+    color: white;
+    text-align: center;
+}
+
+#searchCol1 {
+    background-color: rgb(245, 243, 243);
+}
+
+.blueBoxes {
+    display:inline-block;
+    width:18%;
+    background-color: rgb(55, 83, 211);
+    padding:5px;
+    margin-left: 5px;
+}
+
+.buttonWithCity {
+    display: block;
+}
