@@ -77,6 +77,7 @@ function currentWeatherAPI(city) {
            
             //link to UV text on screen
             // console.log(uvresponse);
+            
             $("#uvIndex").text(uvresponse.value);
         })
         //connecting 5 day forcast api: date,icon, temp,hummidity
@@ -96,11 +97,13 @@ function currentWeatherAPI(city) {
                     var icon = fiveDayResponse.list[i].weather[0].icon;
                     var temp =fiveDayResponse.list[i].main.temp;
                     var humidity =fiveDayResponse.list[i].main.humidity;
-
+                    
+                    temp=parseInt((temp - 273.15) * 9/5 + 32);
+                    
                     $("#day"+index).text(date);
                     $("#weatherIcon"+index).attr("src", "http://openweathermap.org/img/wn/" + icon +".png");
                     // change to FERENHEIT
-                    $("#temp"+index).text(temp);
+                    $("#temp"+index).text(temp+" °F");
                     $("#humidity"+index).text(humidity);
                     index++;
 
