@@ -47,7 +47,7 @@ displayStoredCities();
 
 function currentWeatherAPI(city) {
     var apiKey = "b5f99557449b2cb08a71cf26f5946efb";
-    var currentWeatherURL="http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID="+apiKey;
+    var currentWeatherURL="https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID="+apiKey;
 
     $.ajax({
         url: currentWeatherURL,
@@ -64,30 +64,33 @@ function currentWeatherAPI(city) {
         $("#temp").text(tempInF +" °F");
         $("#humidity").text(response.main.humidity + "%");
         $("#wind").text(response.wind.speed + " MPH");
-        $("#weatherIcon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon +".png")
+        $("#weatherIcon").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon +".png")
 
         //new ajax call for uv index
         var lat=response.coord.lat;
         var lon=response.coord.lon;
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/uvi?appid="+apiKey+"&lat="+lat+"&lon="+lon,
+            url: "https://api.openweathermap.org/data/2.5/uvi?appid="+apiKey+"&lat="+lat+"&lon="+lon,
             method: "GET"
         }).then(function(uvresponse) {
-           
+           console.log(uvresponse);
             //link to UV text on screen
             var uvIndexDisplayed =$("#uvIndex").text(uvresponse.value);
 
             if (uvresponse.value <=2) {
-                uvIndexDisplayed=uvIndexDisplayed.addClass("uvgreen");
+                uvIndexDisplayed.removeClass("uvyellow uvred");
+                uvIndexDisplayed.addClass("uvgreen");
             } else if (uvresponse.value >=2.1 && uvresponse.value <=5 ) {
-                uvIndexDisplayed=uvIndexDisplayed.addClass("uvyellow");
+                uvIndexDisplayed.removeClass("uvgreen uvred");
+                uvIndexDisplayed.addClass("uvyellow");
             } else{
-                uvIndexDisplayed=uvIndexDisplayed.addClass("uvred");
+                uvIndexDisplayed.removeClass("uvyellow uvgreen");
+                uvIndexDisplayed.addClass("uvred");
             };
         });
         //connecting 5 day forcast api: date,icon, temp,hummidity
-        var fiveDayForcastURL="http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+apiKey;
+        var fiveDayForcastURL="https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+apiKey;
 
         $.ajax({
             url: fiveDayForcastURL,
@@ -107,7 +110,7 @@ function currentWeatherAPI(city) {
                     temp=parseInt((temp - 273.15) * 9/5 + 32);
                     
                     $("#day"+index).text(date);
-                    $("#weatherIcon"+index).attr("src", "http://openweathermap.org/img/wn/" + icon +".png");
+                    $("#weatherIcon"+index).attr("src", "https://openweathermap.org/img/wn/" + icon +".png");
                     $("#temp"+index).text(temp+" °F");
                     $("#humidity"+index).text(humidity);
                     index++;
