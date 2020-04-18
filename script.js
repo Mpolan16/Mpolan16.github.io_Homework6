@@ -76,8 +76,16 @@ function currentWeatherAPI(city) {
         }).then(function(uvresponse) {
            
             //link to UV text on screen
-            $("#uvIndex").text(uvresponse.value).addClass("uvindexBox");
-        })
+            var uvIndexDisplayed =$("#uvIndex").text(uvresponse.value);
+
+            if (uvresponse.value <=2) {
+                uvIndexDisplayed=uvIndexDisplayed.addClass("uvgreen");
+            } else if (uvresponse.value >=2.1 && uvresponse.value <=5 ) {
+                uvIndexDisplayed=uvIndexDisplayed.addClass("uvyellow");
+            } else{
+                uvIndexDisplayed=uvIndexDisplayed.addClass("uvred");
+            };
+        });
         //connecting 5 day forcast api: date,icon, temp,hummidity
         var fiveDayForcastURL="http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+apiKey;
 

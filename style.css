@@ -32,3 +32,12 @@
     display: inline-block;
     width: 75%;
 }
+.uvred{
+    background-color: red;
+}
+.uvyellow{
+    background-color:yellow;
+}
+.uvgreen{
+    background-color: green;
+}
