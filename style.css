@@ -28,3 +28,7 @@
     background-color: rgb(48, 47, 47);
     color: seashell;
 }
+#inputCity {
+    display: inline-block;
+    width: 75%;
+}
