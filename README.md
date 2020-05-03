@@ -6,6 +6,5 @@ To use this app the user can search any city and a 5 day forcast shows. If the u
 
 To build this app I used the Bootstrap Framework as well as HTML, Javascript, JQuery, CSS, and Font Awesome. I also used the Current Weather Data, UV Index, and the 5 day / 3 hour forecast APIs from the Open Weather Map API in order to successfuly achieve the project.
 
-
-
+https://mpolan16.github.io/Mpolan16.github.io_Homework6/
 
