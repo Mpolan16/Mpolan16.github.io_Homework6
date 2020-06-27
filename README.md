@@ -19,7 +19,7 @@ This application was created for users who need a detailed 5 day forcast of any 
 ## Usage
 To use this app the user can search any city and a 5 day forcast shows. If the user need multiple cities, the previously searched cities will be saved and can be referenced later.
 
-https://mpolan16.github.io/Mpolan16.github.io_Homework6/
+https://mpolan16.github.io/Weather_outside/
 
 ## Technology
 To build this app I used the Bootstrap Framework as well as HTML, Javascript, JQuery, CSS, and Font Awesome. I also used the Current Weather Data, UV Index, and the 5 day / 3 hour forecast APIs from the Open Weather Map API in order to successfuly achieve the project.
