@@ -1,7 +1,7 @@
 # Weather Outside
 
 ## Description
-This application was created for users who need a detailed 5 day forcast of any city. The ideal user is a traveler or a user that spends time outdoor. 
+This application was created for users who need a detailed 5 day forecast of any city. The ideal user is a traveler or a user that spends time outdoor. 
 
 ## Table of Contents
 
